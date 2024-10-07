@@ -1,8 +1,9 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
-  const { title, img, price, description } = service;
+  const {_id, title, img, price} = service;  
 
   return (
     <div>
@@ -13,7 +14,7 @@ const Service = ({ service }) => {
         <h2 className="text-3xl font-semibold text-black mb-2 mt-1">{title}</h2>
         <div className="flex justify-between">
           <p className="text-xl font-medium text-red-500">Price: ${price}</p>
-          <ArrowRight className="cursor-pointer" color="red" />
+          <Link to={`/checkout/${_id}`}><ArrowRight className="cursor-pointer" color="red" /></Link>
         </div>
       </div>
     </div>
