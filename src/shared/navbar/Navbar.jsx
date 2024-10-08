@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
-  const handleLogout =()=>{
+  const handleLogout = () => {
     logoutUser()
-    .then(()=>{
-      alert("Logout Successfully")
-    })
-    .catch(error=>{
-      console.log(error.message);
-    })
-  }
+      .then(() => {
+        alert("Logout Successfully");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const Links = (
     <>
       <li>
@@ -25,9 +25,14 @@ const Navbar = () => {
         <Link to="/services">Services</Link>
       </li>
       {user?.email ? (
-        <li>
-          <button onClick={handleLogout}>Logout</button>
-        </li>
+        <>
+          <li>
+            <Link to="/bookings">Bookings</Link>
+          </li>
+          <li>
+            <button onClick={handleLogout}>Logout</button>
+          </li>
+        </>
       ) : (
         <li>
           <Link to="/login">Login</Link>
