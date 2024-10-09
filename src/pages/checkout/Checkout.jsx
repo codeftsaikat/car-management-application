@@ -101,7 +101,6 @@ const Checkout = () => {
           </div>
         </div>
         <div className="form-control mt-6">
-          <button>Login</button>
           <input
             className="btn btn-primary btn-block"
             type="submit"
