@@ -1,9 +1,13 @@
 import { useContext } from "react";
 import login_img from "../../assets/images/login/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import axios from "axios";
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { loginUser } = useContext(AuthContext);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,12 +18,23 @@ const Login = () => {
     // login method implement
     loginUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        const user = { email };
+        // get auth
+        axios
+            .post("http://localhost:5000/jwt", user, { withCredentials: true })
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.success) {
+                  navigate(location?.state ?location.state :'/');
+              }
+            });
       })
       .then((error) => console.log("Error is:", error));
-    form.reset();
+    // form.reset();
   };
+
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
