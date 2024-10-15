@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogout = () => {
     logoutUser()
       .then(() => {
         alert("Logout Successfully");
+        Navigate('/login')
       })
       .catch((error) => {
         console.log(error.message);

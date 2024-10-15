@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
 import Service from "./service/Service";
+import useService from "../../../hooks/useService";
 
 const Services = () => {
-  const [services, setServices] = useState([]);
+  const services = useService();
+  
+  // const [services, setServices] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/services")
+  //     .then((res) => res.json())
+  //     .then((data) => setServices(data));
+  // }, []);
   return (
     <div>
       <div className="text-center space-y-3">

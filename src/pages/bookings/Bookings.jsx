@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import BookingRow from "./BookingRow";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
 
   const handleDelete = (id) => {
     const proceed = confirm("Are you sure to delete");
@@ -47,30 +49,14 @@ const Bookings = () => {
       });
   };
 
-  // const url = `http://localhost:5000/bookings?email=${user?.email}`;
-  // useEffect(() => {
-  //   axios.get(url, { withCredentials: true }).then(
-  //     (res) => {
-  //       setBookings(res.data);
-  //     },
-  //     [url]
-  //   );
-  // });
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
-
+  const url = `/bookings?email=${user?.email}`;
   useEffect(() => {
-    if (user?.email) {
-      axios
-        .get(url, { withCredentials: true })
-        .then((res) => {
-          setBookings(res.data);
-        })
-        .catch((err) => {
-          console.error("Error fetching bookings:", err);
-        });
-    }
-  }, [url, user?.email]); // Ensure the effect re-runs if user.email changes
-
+    axiosSecure.get(url)
+    .then(res=>{
+      setBookings(res.data)
+    })
+  }, [url,axiosSecure]);
+ 
   console.log(bookings);
 
   return (
