@@ -3,11 +3,11 @@ import useService from "../../../hooks/useService";
 
 const Services = () => {
   const services = useService();
-  
+
   // const [services, setServices] = useState([]);
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/services")
+  //   fetch("https://car-management-server-three.vercel.app/services")
   //     .then((res) => res.json())
   //     .then((data) => setServices(data));
   // }, []);
