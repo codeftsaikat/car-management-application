@@ -28,7 +28,7 @@ const Checkout = () => {
     console.log("----->>>", booking);
 
 
-    fetch('https://car-management-server-three.vercel.app/bookings',{
+    fetch('https://car-management-server.onrender.com/bookings',{
       method:"POST",
       headers:{
         "content-type":"application/json"

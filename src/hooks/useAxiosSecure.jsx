@@ -4,7 +4,7 @@ import useAuth from '../hooks/useAuth';
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-    baseURL:'https://car-management-server-three.vercel.app',
+    baseURL:'https://car-management-server.onrender.com',
     withCredentials:true,
 })
 
