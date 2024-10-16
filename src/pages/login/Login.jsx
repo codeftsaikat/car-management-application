@@ -23,7 +23,7 @@ const Login = () => {
         // const user = { email };
         // get auth
         // axios
-        //     .post("https://car-management-server-three.vercel.app/jwt", user, { withCredentials: true })
+        //     .post("https://car-management-server.onrender.com/jwt", user, { withCredentials: true })
         //     .then((res) => {
         //       console.log(res.data);
         //       if (res.data.success) {

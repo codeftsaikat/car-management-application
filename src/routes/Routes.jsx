@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         {
             path:'/checkout/:id',
             element:<PrivateRoutes><Checkout></Checkout></PrivateRoutes>,
-            loader:({params})=>fetch(`https://car-management-server-three.vercel.app/checkout/${params.id}`)
+            loader:({params})=>fetch(`https://car-management-server.onrender.com/checkout/${params.id}`)
         },
         {
             path:'/login',
